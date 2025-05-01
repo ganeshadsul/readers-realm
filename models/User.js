@@ -50,7 +50,7 @@ const schema = {
         validate: [
             {
                 validator: function(val) {
-                    return this.val != this.password
+                    return val === this.password
                 },
                 message: 'Confirm password should same as passowrd.'
             }
