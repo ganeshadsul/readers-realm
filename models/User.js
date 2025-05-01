@@ -56,6 +56,10 @@ const schema = {
             }
         ]
     },
+    role: {
+        type: mongoose.Schema.ObjectId,
+        ref: 'Role'
+    },
     status: {
         type: Number,
         default: 1
