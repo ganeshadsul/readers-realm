@@ -7,8 +7,11 @@ const roles = [
         name: 'Admin'
     },
     {
-        name: 'User',
-    }
+        name: 'Book Warden',
+    },
+    {
+        name: 'Scholar',
+    },
 ]
 
 mongoose.connect(config.database.mongo.URI).then(con => {
