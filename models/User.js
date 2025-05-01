@@ -57,8 +57,8 @@ const schema = {
         ]
     },
     status: {
-        type: Boolean,
-        default: true
+        type: Number,
+        default: 1
     },
     createdAt: {
         type: Date,
