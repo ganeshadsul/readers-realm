@@ -5,6 +5,9 @@ const Role = require('../../models/Role')
 const roles = [
     {
         name: 'Admin'
+    },
+    {
+        name: 'User',
     }
 ]
 
