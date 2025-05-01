@@ -2,7 +2,6 @@ const mongoose = require('mongoose')
 const config = require('../../config/default')
 const Role = require('../../models/Role')
 const User = require('../../models/User')
-const roleValue = 'admin'
 const user = {
     firstName: "Admin",
     lastName: "Overseer",
