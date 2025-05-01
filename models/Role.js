@@ -12,6 +12,10 @@ const schema = {
         trim: true,
         lowercase: true
     },
+    status: {
+        type: Number,
+        default: 1
+    },
     createdBy: {
         type: mongoose.Schema.ObjectId,
         ref: 'User',
@@ -40,7 +44,6 @@ const roleSchema = mongoose.Schema(schema, {
 
 roleSchema.pre('save', function(next) {
     this.value = this.name.split(' ').join('_')
-    console.log(this.value);
     next()
 })
 
