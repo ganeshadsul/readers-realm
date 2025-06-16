@@ -3,9 +3,25 @@ const API_SUITE = {
 	"/api/v1/health": {
 		description: "Check API health status",
 		apiType: "GET",  // API type: GET, POST, etc.
-		parameters: [],
+		payload: {},
 		clientCodeRequired: true,
 		clientCode: appConstants.CLIENT_CODES[0], // Specific client code for this endpoint
 	},
+	'/api/v1/auth/login' : {
+		description: "logging in user into the application",
+		apiType: "POST",  // API type: GET, POST, etc.
+		payload: {
+			query: {
+				required: [],
+			},
+			body: {
+				required: [
+					'email', 'password'
+				]
+			}
+		},
+		clientCodeRequired: true,
+		clientCode: appConstants.CLIENT_CODES[0], // Specific client code for this endpoint
+	}
 };
 module.exports = API_SUITE;
