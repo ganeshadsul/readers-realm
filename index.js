@@ -3,10 +3,12 @@ const { initializeServices } = require('./services')
 const { notFoundHandler, errorHandler } = require('./middlewares')
 const morgan = require('morgan')
 const routes = require('./routes')
+const cookieParser = require('cookie-parser')
 require('dotenv').config()
 
 const app = express()
 app.use(express.json())
+app.use(cookieParser())
 
 if(process.env.NODE_ENV === 'development') {
 	app.use(morgan('dev'))
