@@ -5,7 +5,7 @@ const AppError = require('../utils/AppError')
 const validateRequest = (req, res, next) => {
 	const { method, path } = req
 	const clientCode = req.headers['client_code']
-	const endPoint = API_SUITE[path]
+	const endPoint = API_SUITE[`${method} ${path}`]
 
 	// Checking if API exists in the suite
 	if(!endPoint) {
@@ -13,9 +13,9 @@ const validateRequest = (req, res, next) => {
 	}
 
 	// Checking if API method is correct
-	if(endPoint.apiType !== method) {
-		next(new AppError(405, errorMessages.INVALID_REQUEST_TYPE(endPoint.apiType)))
-	}
+	// if(endPoint.apiType !== method) {
+	// 	next(new AppError(405, errorMessages.INVALID_REQUEST_TYPE(endPoint.apiType)))
+	// }
 
 	// Checking is client_code is valid
 	if(endPoint.clientCodeRequired && clientCode !== endPoint.clientCode) {
