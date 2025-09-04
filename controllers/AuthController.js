@@ -4,7 +4,7 @@ const AppError = require('../utils/AppError')
 const User = require('../models/User')
 const { INVALID_CREDENTIALS } = require('../constants/errorMessages')
 const { LOGIN_SUCCESSFUL } = require('../constants/ApiResponseMessages')
-const { SUCCESS } = require('../constants/appConstants')
+const { SUCCESS, AUTH_TOKEN_TYPE } = require('../constants/appConstants')
 
 const generateToken = (id) => {
     return jwt.sign({ id }, process.env.JWT_SECRET, {
@@ -29,7 +29,11 @@ exports.login = wrapAsync(async(req, res, next) => {
     return res.status(200).json({
         status: SUCCESS,
         message: LOGIN_SUCCESSFUL,
-        access_token
+        payload: {
+            access_token,
+            token_type: AUTH_TOKEN_TYPE
+        },
+
     })
     next()
 })
