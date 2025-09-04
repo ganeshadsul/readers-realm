@@ -35,5 +35,20 @@ const API_SUITE = {
 		clientCodeRequired: true,
 		clientCode: appConstants.CLIENT_CODES[0], // Specific client code for this endpoint
 	},
+	"POST /api/v1/roles": {
+		description: "Create a new Role",
+		payload: {
+			query: {
+				required: [],
+				optional: []
+			},
+			body: {
+				required: ['name'],
+				optional: []
+			}
+		},
+		clientCodeRequired: true,
+		clientCode: appConstants.CLIENT_CODES[0], // Specific client code for this endpoint
+	},
 };
 module.exports = API_SUITE;

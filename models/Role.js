@@ -5,6 +5,7 @@ const schema = {
         type: String,
         trim: true,
         required: [true, 'Role name is required.'],
+        unique: true,
         minLength: [2, 'Role must have atleast 2 characters'],
     },
     value: {
@@ -44,6 +45,12 @@ const roleSchema = mongoose.Schema(schema, {
 
 roleSchema.pre('save', function(next) {
     this.value = this.name.split(' ').join('_')
+    next()
+})
+
+roleSchema.pre(/^find/, function(next) {
+    this.populate('createdBy', 'firstName lastName email status role').populate('updatedBy', 'firstName lastName email status role')
+
     next()
 })
 
